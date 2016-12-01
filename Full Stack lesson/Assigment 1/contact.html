@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./login.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                <a class="navbar-brand" href="./index_hl.html">Nouriture</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="./index_hl.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Log in</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Modal -->
+    <div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="flip">
+                    <div class="card">
+                        <div class="face front">
+                            <div class="panel panel-default">
+                                <form class="form-horizontal">
+                                    <br>
+                                    <h1 class="text-center">LOGO</h1>
+                                    <br>
+                                    <input class="form-control" placeholder="Username" />
+                                    <input class="form-control" placeholder="Password" />
+                                    <p class="text-right"><a href="">Forgot Password</a></p>
+                                    <button class="btn btn-primary btn-block">LOG IN</button>
+                                    <hr>
+                                    <p class="blue">Sign in with</p>
+                                    <p><i class="fa fa-facebook-f fa-lg"></i><i class="fa fa-twitter fa-lg"></i></p>
+                                    <hr>
+                                    <p class="text-center">
+                                        <a href="#" class="fliper-btn">Create new account?</a>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="face back">
+                            <div class="panel panel-default">
+                                <form class="form-horizontal">
+                                    <br>
+                                    <h1 class="text-center">LOGO</h1>
+                                    <br>
+                                    <label>Basic Information</label>
+                                    <input class="form-control" placeholder="Fullname" />
+                                    <input class="form-control" placeholder="Email" />
+                                    <label>Private Information</label>
+                                    <input class="form-control" placeholder="Password" />
+                                    <input class="form-control" placeholder="Mobile Number" />
+                                    <button class="btn btn-primary btn-block">SIGN UP</button>
+                                    <p class="text-center">
+                                        <a href="#" class="fliper-btn">Already have an account?</a>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
+            <img src="./img\Stitch.jpg" alt="" />
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $('.fliper-btn').click(function() {
+            $('.flip').find('.card').toggleClass('flipped');
+
+        });
+    </script>
+
+</body>
+
+</html>
