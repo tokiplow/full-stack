@@ -6,12 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nouriture</title>
-	<script type="text/javascript" src="./js/user.js"></script>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="./index.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -42,7 +41,7 @@
                         <a href="./contact.html">Contact</a>
                     </li>
                     <li>
-                        <a href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Log in</a>
+                        <a href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Log out</a>
                     </li>
                 </ul>
             </div>
@@ -206,8 +205,7 @@
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <h4 style="color:#337ab7">Add some items ?
                             </h4>
-                        <p>If you want to add some items, please log in</p>
-                        <button class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</button>
+                        <form action="/upload-target" class="dropzone dz-clicable"></form>
                     </div>
 
                 </div>
@@ -240,10 +238,10 @@
                                     <br>
                                     <h1 class="text-center">LOGO</h1>
                                     <br>
-                                    <input class="form-control" placeholder="Username" id="userNameLogin"/>
-                                    <input class="form-control" placeholder="Password" id="passwordLogin"/>
+                                    <input class="form-control" placeholder="Username" />
+                                    <input class="form-control" placeholder="Password" />
                                     <p class="text-right"><a href="">Forgot Password</a></p>
-                                    <button class="btn btn-primary btn-block" id="signinButton">LOG IN</button>
+                                    <button class="btn btn-primary btn-block">LOG IN</button>
                                     <hr>
                                     <p class="blue">Sign in with</p>
                                     <p><i class="fa fa-facebook-f fa-lg"></i><i class="fa fa-twitter fa-lg"></i></p>
@@ -266,7 +264,7 @@
                                     <label>Private Information</label>
                                     <input class="form-control" placeholder="Password" />
                                     <input class="form-control" placeholder="Mobile Number" />
-                                    <button class="btn btn-primary btn-block" id="signupButton">SIGN UP</button>
+                                    <button class="btn btn-primary btn-block">SIGN UP</button>
                                     <p class="text-center">
                                         <a href="#" class="fliper-btn">Already have an account?</a>
                                     </p>
@@ -283,6 +281,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="./dropzone.js"></script>
     <script type="text/javascript">
         $('.fliper-btn').click(function() {
             $('.flip').find('.card').toggleClass('flipped');
