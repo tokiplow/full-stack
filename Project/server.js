@@ -45,6 +45,13 @@ io.on('connection', function(socket){
     }, 10000);
   });
 
+  socket.on('products', function(msg) {
+    var productList = require("./items.json");
+
+    data = JSON.stringify(productList);
+    socket.emit("products", data);
+  });
+
   socket.on('signup', function(msg) {
     console.log('signup data: ' + msg);
     data = JSON.parse(msg);
@@ -99,6 +106,18 @@ io.on('connection', function(socket){
       return;
     }
     socket.emit("authorize", "KO");
+  });
+
+  socket.on('get_profile', function(msg) {
+    var user = null;
+    connected_user.forEach(function(item){
+      if (item.uid === msg) {user = item;}
+    });
+    if (user === null) {
+      return;
+    }
+    data = JSON.stringify(user);
+    socket.emit("get_user", data);
   });
 
   socket.on('signout', function(msg) {

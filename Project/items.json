@@ -5,8 +5,8 @@
     "price" : 15,
     "review" : ["Chouette", "Cool", "Je kiff", "Awsome", "Bonjour maman"],
     "note": 5,
-    "picture" : "./src/static/pictures/Crepe.png",
-    "categorie" : "Nouriture"
+    "picture" : "/static/pictures/Crepe.png",
+    "categorie" : "Nourriture"
   },
   {
     "name" : "Croissant",
@@ -14,47 +14,47 @@
     "price" : 2,
     "review" : ["Such Croissant", "Such French"],
     "note": 4,
-    "picture" : "./src/static/pictures/Croissant.jpg",
-    "categorie" : "Nouriture"
+    "picture" : "/static/pictures/Croissant.jpg",
+    "categorie" : "Nourriture"
   },{
     "name" : "Fajitas",
     "description" : "Ola yo soy mexican",
     "price" : 37,
     "review" : ["Aie Pepito"],
     "note": 2,
-    "picture" : "./src/static/pictures/image1.jpg",
-    "categorie" : "Nouriture"
+    "picture" : "/static/pictures/image1.jpg",
+    "categorie" : "Nourriture"
   },{
     "name" : "Salade",
     "description" : "Pour les Vegans",
     "price" : 10,
     "review" : ["Chouette", "Cool", "Je kiff", "Awsome", "Bonjour maman"],
     "note": 1,
-    "picture" : "./src/static/pictures/image2.jpg",
-    "categorie" : "Nouriture"
+    "picture" : "/static/pictures/image2.jpg",
+    "categorie" : "Nourriture"
   },{
     "name" : "Tournedos",
     "description" : "De la viande !!! Du boeuf !!!",
     "price" : 40,
     "review" : ["Chouette", "Cool", "Je kiff", "Awsome", "Bonjour maman"],
     "note": 5,
-    "picture" : "./src/static/pictures/image3.jpg",
-    "categorie" : "Nouriture"
+    "picture" : "/static/pictures/image3.jpg",
+    "categorie" : "Nourriture"
   },{
     "name" : "Sandwich",
     "description" : "Pour Manger sur le pouce",
     "price" : 2,
     "review" : ["Utile quand j'ai faim", "Cool", "Je kiff", "Awsome", "Bonjour maman"],
     "note": 2,
-    "picture" : "./src/static/pictures/image4.jpg",
-    "categorie" : "Nouriture"
+    "picture" : "/static/pictures/image4.jpg",
+    "categorie" : "Nourriture"
   },{
     "name" : "Tacos",
     "description" : "Comme des crêpes, mais méxicain",
     "price" : 30,
     "review" : ["Chouette", "Cool", "Je kiff", "Awsome", "Bonjour maman"],
     "note": 4,
-    "picture" : "./src/static/pictures/image5.jpg",
-    "categorie" : "Nouriture"
+    "picture" : "/static/pictures/image5.jpg",
+    "categorie" : "Nourriture"
   }
 ]

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/css/login.css">
     <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/profile.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -35,14 +36,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                <a class="navbar-brand" href="#">Nouriture</a>
+                <a class="navbar-brand" href="#" id="main-view">E-commerce</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav" id="navbar-ul">
-                    <li>
-                        <a href="./contact.html">Contact</a>
-                    </li>
                     <li><a href='#signup' data-toggle='modal' data-target='.bs-modal-sm' id='nav-login-button'>Log in</a></li>
                 </ul>
             </div>
@@ -93,11 +91,10 @@
                     </div>
 
                 </div>
-                <h1>Shopping List</h1>
-                <div class="row">
+                <h1>Product List</h1>
+                <div class="row" id="product-list">
 
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-
+                    <div class="col-sm-4 col-lg-4 col-md-4" id="product">
                         <div class="thumbnail">
                             <img src="/static/pictures/image1.jpg" alt="">
                             <div class="caption">
@@ -118,95 +115,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="/static/pictures/image2.jpg" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$64.99</h4>
-                                <h4><a href="#">Second Product</a>
-                                    </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">12 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="/static/pictures/image3.jpg" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$74.99</h4>
-                                <h4><a href="#">Third Product</a>
-                                    </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">31 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="/static/pictures/image4.jpg" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$84.99</h4>
-                                <h4><a href="#">Fourth Product</a>
-                                    </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">6 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="/static/pictures/image5.jpg" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$94.99</h4>
-                                <h4><a href="#">Fifth Product</a>
-                                    </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">18 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
                   <!--  <div class="col-sm-4 col-lg-4 col-md-4">
                         <h4 style="color:#337ab7">Add some items ?
                             </h4>
@@ -223,6 +131,53 @@
     </div>
   </main>
     <!-- /.container -->
+
+
+  <profile id="profile-view" class="profile">
+    <div class="col-md-12" style="padding-top:45px">
+        <div class="card hovercard">
+            <div class="card-background">
+                <img class="card-bkimg" alt="" src="/static/pictures/Crepe.png">
+            </div>
+            <div class="useravatar" id="profile-picture">
+            </div>
+            <div class="card-info" id="profile-name">
+            </div>
+        </div>
+        <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                <div class="hidden-xs">Notes</div>
+            </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                <div class="hidden-xs">Favorites</div>
+            </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <div class="hidden-xs">Following</div>
+            </button>
+            </div>
+        </div>
+
+        <div class="well">
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="tab1">
+                    <h3>Nothing to show here...</h3>
+                </div>
+                <div class="tab-pane fade in" id="tab2">
+                    <h3>Nothing to show here...</h3>
+                </div>
+                <div class="tab-pane fade in" id="tab3">
+                    <h3>Nothing to show here...</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+  </profile>
     <hr>
     <!-- Footer -->
     <footer>

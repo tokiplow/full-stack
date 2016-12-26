@@ -7,6 +7,7 @@ socket.on('connect', function() {
     console.log(localStorage.getItem("UniqueID"));
     socket.emit("authorize", localStorage.getItem("UniqueID"));
   }
+  socket.emit("products", "get_products");
 });
 
 var slide = function slide() {
@@ -50,25 +51,58 @@ socket.on("errors", function(msg) {
   }
 });
 
+socket.on("get_user", function(msg) {
+  obj = JSON.parse(msg);
+
+  name = obj.username;
+  email = obj.email;
+  if ($('#pic-pic').length === 0) {
+    $("#profile-picture").append("<img alt='' src='https://s.gravatar.com/avatar/909ecf5782b2ea2ee8888221dd8beba8?s=80' id='pic-pic'/>");
+  }
+  if ($('#name-name').length === 0) {
+    $("#profile-name").append("<span class='card-title' id='name-name'>" + name + "</span>");
+  }
+});
+
+socket.on("products", function(msg) {
+  obj = JSON.parse(msg);
+  $("#product").remove();
+  obj.forEach(function(item){
+    var stars = item.note;
+    var star_code = "";
+    i = 0;
+    while (i++ < stars) {
+      star_code = star_code + "<span class='glyphicon glyphicon-star'></span>";
+    }
+    $("#product-list").append("<div class='col-sm-4 col-lg-4 col-md-4' id='product'><div class='thumbnail'><img src='" + item.picture + "' alt=''><div class='caption'><h4 class='pull-right'>" + item.price + "$" + "</h4><h4><a href='#'>" + item.name + "</a></h4><p>" + item.description + "</p></div><div class='ratings'><p>" + star_code + "</p></div></div></div>");
+  });
+  console.log("All products added !");
+});
+
 socket.on('authorize', function(msg) {
   console.log(msg);
   if (msg === "OK") {
     connected = true;
+    $("#navbar-ul").append("<li><a href='#profile' id='profile-button'>Profile</a></li>");
     $("#navbar-ul").append("<li><a href='#signout' id='nav-logout-button'>Log out</a></li>")
     $("#nav-login-button").remove();
     $("#navbar-ul").append("<li><button type='button' class='toggle-button btn btn-primary btn-lg nav-btn-perso' data-toggle='button' aria-pressed='false' autocomplete='off' id='nav-cart'>☰ Chart</button></li>");
     $("#my-slide-panel").append("<nav id='navbar-main' style='margin-top : 51px;''></nav>");
     document.getElementById("nav-logout-button").onclick = function fun() { signout(); }
+    document.getElementById("profile-button").onclick = function fun() { show_profile(); }
     loadScript("/static/js/slideout-1.0.1/dist/slideout.js", slide);
   }
   else {
     connected = false;
     if ($('#nav-login-button').length === 0) {
-      $("#navbar-ul").append("")
+      $("#navbar-ul").append("<li><a href='#signup' data-toggle='modal' data-target='.bs-modal-sm' id='nav-login-button'>Log in</a></li>")
     }
     $("#nav-logout-button").remove();
     $("#nav-cart").remove();
     $("#navbar-main").remove();
+    $("#profile-button").remove();
+    document.getElementById("main").style.display = 'block';
+    document.getElementById("profile-view").style.display = 'none';
   }
 });
 
@@ -79,6 +113,7 @@ window.onload = function() {
 	document.getElementsByTagName('head')[0].appendChild(script);
   document.getElementById("signinButton").onclick = function fun() { signin(); }
   document.getElementById("signupButton").onclick = function fun() { signup(); }
+  document.getElementById("main-view").onclick = function fun() { show_main(); }
 }
 
 function signin() {
@@ -107,9 +142,18 @@ function signup() {
 }
 
 function signout() {
-	//var Obj = { return_code : "0", username : userName, pass : password , email : Email, mobile : Mobile};
-	//var data = JSON.stringify(Obj);
   socket.emit("signout", "signout");
+}
+
+function show_profile() {
+  socket.emit("get_profile", localStorage.getItem("UniqueID"));
+  document.getElementById("main").style.display = 'none';
+  document.getElementById("profile-view").style.display = 'block';
+}
+
+function show_main() {
+  document.getElementById("main").style.display = 'block';
+  document.getElementById("profile-view").style.display = 'none';
 }
 
 function loadScript(url, callback)
