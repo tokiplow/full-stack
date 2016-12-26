@@ -9,17 +9,55 @@ socket.on('connect', function() {
   }
 });
 
+var slide = function slide() {
+  var slideout = new Slideout({
+      'panel': document.getElementById('main'),
+      'menu': document.getElementById('navbar-main'),
+      'padding': 256,
+      'tolerance': 70,
+      'side': 'right'
+  });
+
+  // Toggle button
+  document.querySelector('.toggle-button').addEventListener('click', function() {
+      slideout.toggle();
+  });
+
+  function close(eve) {
+      eve.preventDefault();
+      slideout.close();
+  }
+
+  slideout
+      .on('beforeopen', function() {
+          this.panel.classList.add('main-open');
+      })
+      .on('open', function() {
+          this.panel.addEventListener('click', close);
+      })
+      .on('beforeclose', function() {
+          this.panel.classList.remove('main-open');
+          this.panel.removeEventListener('click', close);
+      });
+}
+
 socket.on('authorize', function(msg) {
   console.log(msg);
   if (msg === "OK") {
     connected = true;
     $("#navbar-ul").append("<li><a href='#signout' id='nav-logout-button'>Log out</a></li>")
     $("#nav-login-button").remove();
+    $("#navbar-ul").append("<li><button type='button' class='toggle-button btn btn-primary btn-lg nav-btn-perso' data-toggle='button' aria-pressed='false' autocomplete='off' id='nav-cart'>☰ Chart</button></li>");
+    $("#my-slide-panel").append("<nav id='navbar-main' style='margin-top : 51px;''></nav>");
+    document.getElementById("nav-logout-button").onclick = function fun() { signout(); }
+    loadScript("/static/js/slideout-1.0.1/dist/slideout.js", slide);
   }
   else {
     connected = false;
     $("#navbar-ul").append("<li><a href='#signup' data-toggle='modal' data-target='.bs-modal-sm' id='nav-login-button'>Log in</a></li>")
     $("#nav-logout-button").remove();
+    $("#nav-cart").remove();
+    $("#navbar-main").remove();
   }
 });
 
@@ -53,4 +91,34 @@ function signup() {
 	var Obj = { return_code : "0", username : userName, pass : password , email : Email, mobile : Mobile};
 	var data = JSON.stringify(Obj);
   socket.emit("signup", data);
+}
+
+function signout() {
+	//var Obj = { return_code : "0", username : userName, pass : password , email : Email, mobile : Mobile};
+	//var data = JSON.stringify(Obj);
+  socket.emit("signout", "signout");
+}
+
+function loadScript(url, callback)
+{
+    // Adding the script tag to the head as suggested before
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+
+    // Then bind the event to the callback function.
+    // There are several events for cross browser compatibility.
+    script.onreadystatechange = callback;
+    script.onload = callback;
+
+    // Fire the loading
+    head.appendChild(script);
+}
+
+function reloadStylesheets() {
+    var queryString = '?reload=' + new Date().getTime();
+    $('link[rel="stylesheet"]').each(function () {
+        this.href = this.href.replace(/\?.*|$/, queryString);
+    });
 }

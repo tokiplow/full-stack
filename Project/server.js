@@ -5,6 +5,8 @@ var io = require('socket.io')(http);
 
 var userList = [];
 
+var obj = require("./items.json");
+
 var connected_user = [];
 
 app.use('/static', express.static(__dirname + '/src/static/'));
@@ -28,7 +30,12 @@ io.on('connection', function(socket){
       return;
     }
     connected_user[index]['active'] = false;
+    uid = connected_user[index].uid;
     setTimeout(function () {
+      if (!connected_user[index] || connected_user[index].uid != uid) {
+        console.log("user already logged out...")
+        return;
+      }
       if (!connected_user[index].active) {
         console.log(connected_user[index].username + " has been force logged out");
         connected_user.splice(index, 1);
@@ -79,6 +86,22 @@ io.on('connection', function(socket){
       return;
     }
     socket.emit("authorize", "KO");
+  });
+
+  socket.on('signout', function(msg) {
+    var index = -1;
+    var i = 0;
+    connected_user.forEach(function(item){
+      if (item.socketID === socket.id) {index = i;}
+      i = i + 1;
+    });
+    if (index === -1) {
+      console.log("Whatever...")
+      return;
+    }
+    console.log("Bye Bye " + connected_user[index].username);
+    connected_user.splice(index, 1);
+    socket.emit("authorize", "KO")
   });
 });
 
