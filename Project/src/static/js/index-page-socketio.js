@@ -41,6 +41,15 @@ var slide = function slide() {
       });
 }
 
+socket.on("errors", function(msg) {
+  if (msg === 'signup') {
+    alert("This login is already taken !");
+  }
+  else if (msg === 'signin') {
+    alert("Wrong IDs");
+  }
+});
+
 socket.on('authorize', function(msg) {
   console.log(msg);
   if (msg === "OK") {
@@ -55,7 +64,7 @@ socket.on('authorize', function(msg) {
   else {
     connected = false;
     if ($('#nav-login-button').length === 0) {
-      $("#navbar-ul").append("<li><a href='#signup' data-toggle='modal' data-target='.bs-modal-sm' id='nav-login-button'>Log in</a></li>")
+      $("#navbar-ul").append("")
     }
     $("#nav-logout-button").remove();
     $("#nav-cart").remove();
@@ -87,7 +96,9 @@ function signin() {
 
 function signup() {
 	var userName = document.getElementById('userNameSignup').value;
+  if (userName.length === 0) {alert("Login cannot be empty !"); return;}
 	var password = document.getElementById('passwordSignup').value;
+  if (password.length < 4) {alert("Password must be at least 4 characters long"); return;}
 	var Email = document.getElementById('emailSignup').value;
   var Mobile = document.getElementById('mobileSignup').value;
 	var Obj = { return_code : "0", username : userName, pass : password , email : Email, mobile : Mobile};

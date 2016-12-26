@@ -50,12 +50,19 @@ io.on('connection', function(socket){
     data = JSON.parse(msg);
     var user = {username : data.username, pass : data.pass , email : data.email, mobile : data.mobile};
     var userList = require("./users.json");
+    var exist = false;
+
+    userList.forEach(function(item){
+      if (item.username === user.username) {
+        socket.emit("errors", "signup");
+        exist = true;
+        console.log("USER already exist");
+      }
+    });
+    if (exist) return;
     userList.push(user);
     data = JSON.stringify(userList);
     fs.writeFileSync("./users.json", data);
-    //var jsonFile = fopen('./user.json','w+');
-    //fwrite(jsonFile, data);
-    //fclose(jsonFile);
     console.log(userList.length);
   });
 
@@ -75,6 +82,7 @@ io.on('connection', function(socket){
       return;
     }
     socket.emit("authorize", "KO")
+    socket.emit("errors", "signin");
   });
 
   socket.on('authorize', function(uid){
