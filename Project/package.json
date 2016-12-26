@@ -1,0 +1,11 @@
+{
+  "name": "full-stack-project",
+  "version": "0.0.1",
+  "description": "An e-market app",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "express": "^4.10.2",
+    "font-awesome": "^4.7.0",
+    "socket.io": "^1.7.2"
+  }
+}
