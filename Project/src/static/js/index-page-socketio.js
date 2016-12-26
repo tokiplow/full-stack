@@ -54,7 +54,9 @@ socket.on('authorize', function(msg) {
   }
   else {
     connected = false;
-    $("#navbar-ul").append("<li><a href='#signup' data-toggle='modal' data-target='.bs-modal-sm' id='nav-login-button'>Log in</a></li>")
+    if ($('#nav-login-button').length === 0) {
+      $("#navbar-ul").append("<li><a href='#signup' data-toggle='modal' data-target='.bs-modal-sm' id='nav-login-button'>Log in</a></li>")
+    }
     $("#nav-logout-button").remove();
     $("#nav-cart").remove();
     $("#navbar-main").remove();

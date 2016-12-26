@@ -2,10 +2,8 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-
-var userList = [];
-
-var obj = require("./items.json");
+var fs = require("fs");
+var item_list = require("./items.json");
 
 var connected_user = [];
 
@@ -51,7 +49,13 @@ io.on('connection', function(socket){
     console.log('signup data: ' + msg);
     data = JSON.parse(msg);
     var user = {username : data.username, pass : data.pass , email : data.email, mobile : data.mobile};
+    var userList = require("./users.json");
     userList.push(user);
+    data = JSON.stringify(userList);
+    fs.writeFileSync("./users.json", data);
+    //var jsonFile = fopen('./user.json','w+');
+    //fwrite(jsonFile, data);
+    //fclose(jsonFile);
     console.log(userList.length);
   });
 
@@ -60,6 +64,7 @@ io.on('connection', function(socket){
     data = JSON.parse(msg);
     var user = {username : data.username, pass : data.pass, uid : data.uid, socketID : socket.id, active : false};
     var exist = false;
+    var userList = require("./users.json");
     userList.forEach(function(item){
       if (item.username === user.username && item.pass === user.pass) {exist = true;}
     });
